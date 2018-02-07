@@ -39,6 +39,7 @@ export class CKEditorComponent implements OnChanges, AfterViewInit {
   @Input() config: any;
   @Input() readonly: boolean;
   @Input() debounce: string;
+  @Input() types: string;
 
   @Output() change = new EventEmitter();
   @Output() editorChange = new EventEmitter();
@@ -137,7 +138,12 @@ export class CKEditorComponent implements OnChanges, AfterViewInit {
         config.readOnly = this.readonly;
       }
       // CKEditor replace textarea
-      this.instance = CKEDITOR.replace(this.host.nativeElement, config);
+      if (this.types === 'inline') {
+        this.instance = CKEDITOR.inline(this.host.nativeElement, config);
+      } else {
+        this.instance = CKEDITOR.replace(this.host.nativeElement, config);
+      }
+      
 
       // Set initial value
       this.instance.setData(this.value);
