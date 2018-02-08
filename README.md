@@ -15,7 +15,7 @@ Use the [CKEditor (4.x)](http://ckeditor.com/) wysiwyg in your Angular applicati
 * Install ng2-ckeditor
 
   * JSPM : `jspm install npm:ng2-ckeditor`
-  * NPM : `npm install ng2-ckeditor`
+  * NPM : `npm install jongwon/ng2-ckeditor`
 
 * SystemJS Config :
 
@@ -62,6 +62,7 @@ import { Component } from '@angular/core';
     [(ngModel)]="ckeditorContent"
     [config]="{uiColor: '#99000'}"
     [readonly]="false"
+    [types]="'inline'" <!-- for inline ckeditor  -->
     (change)="onChange($event)"
     (editorChange)="onEditorChange($event)" <!-- CKEditor change event -->
     (ready)="onReady($event)"
